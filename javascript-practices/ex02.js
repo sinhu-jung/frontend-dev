@@ -19,8 +19,24 @@
 4. {}(객체 리터럴, Json)
 
 [객체2] function type
+1.new 생성자함수 () 사용해서 생성
+    Function() -> function type 객체가 생성 
+2.
+    function(...) {....} (함수 리터럴 )
+*/
 
-
+/*
+자바 스크립트의 객체를 구분하는 또 다른 방법
+1. 내장(Built-In, Native) 객체
+    자바 스크립트 엔진 안에 미리 내장되어 있는 객체
+    Number, Boolean, Datem RegExp ... 생성자 함수 객체
+    parseInt, setTimeout, setInterval 와  같은 일반 함수 객체 
+    window 객체(브라우저 에서만 ... 전역 객체)
+2. 호스트 객체
+    자바스크립트 엔진이 임베디드 된 호스트의 객체 (자바스크립트 접근 가능)
+    브라우저만 해당(document, location, XmlHttpRequest, ...)
+3. 사용자 객체 
+    자바스크립트 코드가 엔진에서 실행되면서 생성되는 개체들...
 */
 
 // 자바 스크립트는 선언과 정의의 구분이 없음 
