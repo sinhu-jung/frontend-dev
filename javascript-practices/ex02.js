@@ -7,7 +7,7 @@
 3. string
 4. undefined
 
-[객체]
+[객체] new 생성자함수 () 사용해서 생성 
 Number()
 Boolean()
 String()
@@ -25,3 +25,12 @@ console.log("u: " + typeof(u));
 console.log("i: " + typeof(i));
 console.log("b: " + typeof(b));
 console.log("s: " + typeof(s));
+
+console.log("=====================================")
+var i2 = new Number(10);
+var b2 = new Boolean(true);
+var s2 = new String("Hello World");
+
+console.log("i2: " + typeof(i2));
+console.log("b2: " + typeof(b2));
+console.log("s2: " + typeof(s2));
