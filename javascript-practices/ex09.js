@@ -9,14 +9,14 @@ var MyObject = function(name, age){
 }
 
 MyObject.prototype.school = 'bit';
-MyObject.prototype.course = 'douzone'
+MyObject.prototype.course = 'douzone';
 MyObject.prototype.info = function() {
     console.log(this.name + ":" + this.age + ":" + this.school + ":" + this.course);
 }
 
 // MyObject 객체 생성 1
 var o1 = new MyObject("둘리", 10);
-o1.school = 'multicampus'
+o1.school = 'multicampus';
 console.log(o1.school + ":" + o1.name);
 o1.info();
 
@@ -27,6 +27,6 @@ o2.info();
 
 // 오버라이딩
 o2.info = function(){
-    console.log("비밀!!!!!")
+    console.log("비밀!!!!!");
 }
 o2.info();
