@@ -22,7 +22,7 @@ const goods = {
 let {name, price, soldCount = 0, stockCount = 0} = goods;
 console.log(name, price, soldCount, stockCount);
 
-// ex3 - Different Variable Names
+// ex3 - 구조 분해해야 할 객체의 속성과 변수 이름이 다를 때 
 const person = {
     name: "정신후",
     country: "korea"
@@ -30,3 +30,84 @@ const person = {
 
 let {name: fullName, country: place} = person
 console.log(fullName, place);
+
+// ex4 - 내부 객체(Nested Object)의 구조 분해
+const student = {
+    name: '둘리',
+    age: 10,
+    scored: {
+        maths: 70,
+        korean: 90,
+        science: 100
+    }
+}
+const { 
+    name: studentName, 
+    scored: {
+        maths = 0,
+        korean = 0,
+        science = 0,
+        music = 0
+    }} = student;
+
+console.log(`${studentName}의 성적 \n수학:${maths}, 국어:${korean}, 과학:${science}, 음악:${music}`);
+
+// ex5 - 함수의 파라미터
+var averageScore = function({
+    name, 
+    scored: {
+        maths = 0,
+        korean = 0,
+        science = 0,
+        music = 0
+    }
+}){
+    console.log(`${name}의 평균은 ${(maths + korean + science + music)/4} 입니다.`);
+}
+
+averageScore(student);
+
+// ex6 - 배열의 구조분해 기본
+const color = [155, 200, 87];
+[red, green, blue] = color;
+
+console.log(red, green, blue );
+
+
+// ex7 - 배열의 구조분해 디폴트 값
+[red=0, green=0, blue=0, alpha=0] = color;
+console.log(red, green, blue, alpha );
+
+// ex8 - skip values
+let [,,colorOfBlue=0] = color;
+console.log(colorOfBlue);
+
+// ex9 - swap values
+x = 10;
+y = 20;
+console.log(x, y);
+let temp = x;
+x = y;
+y = temp;
+console.log(x, y);
+[x, y] = [y, x];
+console.log(x, y);
+
+// ex 10 - ... array spread operator
+const rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+let [firstColor, secondColor, ...otherColors] = rainbow; 
+console.log(firstColor, secondColor, otherColors);
+
+console.log("Colors of Rainbow:", rainbow);
+console.log("Colors of Rainbow:", ...rainbow);
+
+// // red:orange:yello:green
+// var f = function(...colors){
+//     // console.log(colors);
+//     return colors.join(":");
+// }
+
+// console.log(f('red', 'yellow', 'blue'));
+
+s = ((...colors) => colors.join(":"))('red', 'yellow', 'blue')
+console.log(s);
