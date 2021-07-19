@@ -51,6 +51,6 @@ const fetch = async function(url) {// ex) model.findAll, model insert ...
 // }
 // f();
 
-fetch();
+fetch("http://www.kickscar.com/api");
 
 console.log("do something");
