@@ -12,7 +12,8 @@
 5. Node 기반 백엔트 어플리케이션 테스트 -> Mocha
     - Promise 기반 비동기 테스트
     - 자체 Assertion 이 없다.
-    - 대신 외부 assertion 라이브러리를 다양하게 지원한다. (chai, should.js, expect.js)
+    - 대신, Node 코어 모듈 중에 assert 모듈 뿐만 아니라 
+      다양한 외부 assertion 라이브러리를 다양하게 지원한다. (chai, should.js, expect.js)
     - 유연하고 확장성이 좋다.
 6. Jasmine, QUnit**, Mocha, Jest(React 개발 테스트 도구)
 
@@ -31,4 +32,65 @@ exports.hello = () => 'hello';
 
 [test/ex01.js]
 ```javascript
+const assert = require('assert');
+const { hello } = require('../ex01');
+
+// test case 안의 함수는 람다 사용을 안하는게 좋다.
+describe('hello()', function(){
+    it('"Hello World" 문자열을 반환 해야함', function(){
+        assert.strictEqual(hello(), "Hello World");
+    })
+})
 ```
+
+테스트 수행1 (개별적)
+```bash
+$ npx mocha test/ex01
+```
+
+테스트 수행2 (일괄적)
+```bash
+$ npx mocha
+```
+
+테스트 수행3 (npm scripts stage)
+1. package.json 에 scripts test stage를 추가 
+```json
+.
+.
+  "scripts": {
+    "test": "npx mocha"
+  }
+.
+.
+```
+2. 테스트 수행
+```bash
+$ npm test
+```
+
+## Assertion 기초
+[ex02.js] => assertion 만 사용해서 test (mocha 사용 X)
+```javascript
+exports.add = (a, b) => a + b;
+exports.na = () => [2, 4, 6];
+// 생성자 함수는 람다 사용 X
+exports.X = function(){}
+```
+[ex02.test.js]
+```javascript
+const assert = require('assert');
+const {add} = require('./ex02');
+
+try{
+    assert.equal(add(10, 20)/*actual*/, '30'/*expect*/); // ==
+    assert.strictEqual(add(10, 20)/*actual*/, '30'/*expect*/); // === 
+    console.log('ok');
+} catch (e) {
+    console.log('fail:',e.message);
+```
+Strict Mode(===, !===, 객체인 경우 동일성 비교)로 assertion을 하여야 한다.
+1. equals(deprecateds) -> strictEqual
+2. notEquals(deprecateds) -> strictNotEquals
+3. deepEquals(deprecateds) -> strictDeepEqual
+4. notDeepEquals(deprecateds) -> notStrictDeepEquals
