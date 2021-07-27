@@ -12,8 +12,5 @@ foods.forEach(function(food, index){
 
 console.log(arr1);
 
-const arr2 = foods.map(function(food){
-    return { no:food.no, n:food.name, q:food.quantity };
-});
-
+const arr2 = foods.map((food) => ({ no:food.no, n:food.name, q:food.quantity }));
 console.log(arr2);
